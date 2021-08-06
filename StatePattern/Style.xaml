@@ -31,7 +31,7 @@
                                 </Ellipse>
                             </Viewbox>-->
                         <Image Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill"
-                                   Source="/Resource/Image/Prepare/AnimationVideoPlayer/bh_pla_icon_point.png">
+                                   Source="Images/point.png">
                         </Image>
                     </Grid>
                 </ControlTemplate>
@@ -112,82 +112,236 @@
         </Setter>
     </Style>
     <!-- Volume progress bar -->
-    <Style x:Key="volumeSlider" TargetType="Slider" >
-        <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Focusable" Value="false" />
-        <Setter Property="IsSnapToTickEnabled" Value="True" />
-        <Setter Property="IsMoveToPointEnabled" Value="True" />
-        <Setter Property="Maximum" Value="10" />
-        <Setter Property="Minimum" Value="0" />
-        <Setter Property="Orientation" Value="Vertical" />
-        <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="TickFrequency" Value="0.01"/>
-        <Setter Property="Template">
+    
+    <ControlTemplate x:Key="withoutMouseOver"
+           TargetType="Button">
+        <Grid>
+            <Label VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontWeight="Light"
+                       FontSize="16"
+                       Foreground="#2e2b30"
+                   Width="50"
+                   Height="50"
+                  
+                       ></Label>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="withoutMouseOverSignUp"
+           TargetType="Button">
+        <Grid>
+            <TextBlock  Background="White"
+                        Foreground="Blue"
+                        FontSize="13"
+                        Text="Sign Up"
+                        VerticalAlignment="Top"
+                   ></TextBlock>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="withoutMouseOverLogOut"
+           TargetType="Button">
+        <Grid>
+            <Label  Background="#2e2b30"
+                    Foreground="LightGray"
+                    Content="Log Out"
+                    FontSize="18"
+                    BorderThickness="0"
+                    VerticalAlignment="Center"
+                   ></Label>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="withoutMouseOverBack"
+           TargetType="Button">
+        <Grid>
+            <Label  Background="#2e2b30"
+                    Foreground="LightGray"
+                    Content="Back "
+                    FontSize="18"
+                    BorderThickness="0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                   ></Label>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+
+    <Style x:Key="MyFocusVisual">
+        <Setter Property="Control.Template">
             <Setter.Value>
-                <ControlTemplate TargetType="Slider">
-                    <Grid Width="64" HorizontalAlignment="Center" Margin="0,20">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="40"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <!-- Volume value text -->
-                        <TextBlock 
-                                Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Stretch"
-                                x:Name="TextBlock1"
-                                Foreground="{StaticResource volumeSlider_TextColor}"
-                                                                 FontFamily="Microsoft Yahei"
-                                FontSize="20"
-                                Text="{Binding Path=VolumeText,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:AnimationVideoPlayer}}"/>
-                        <!-- Volume slider -->
-                        <Border 
-                                Grid.Row="1"
-                                BorderBrush="Transparent" BorderThickness="0" CornerRadius="0">
-                            <Track Name="PART_Track">
-                                <Track.DecreaseRepeatButton>
-                                    <RepeatButton 
-                                            Style="{StaticResource commonSlider_RepeatButton}"
-                                            Width="4" 
-                                            Background="{StaticResource commonSlider_BrightColor}" 
-                                            Command="Slider.DecreaseLarge"
-                                            RenderTransformOrigin="0.5,0.5">
-                                        <RepeatButton.RenderTransform>
-                                            <TransformGroup>
-                                                <ScaleTransform ScaleX="-1"/>
-                                                <SkewTransform/>
-                                                <RotateTransform/>
-                                                <TranslateTransform/>
-                                            </TransformGroup>
-                                        </RepeatButton.RenderTransform>
-                                        <RepeatButton.Template>
-                                            <ControlTemplate>
-                                                <Border Background="{TemplateBinding Background}" CornerRadius="0,0,2,2"/>
-                                            </ControlTemplate>
-                                        </RepeatButton.Template>
-                                    </RepeatButton>
-                                </Track.DecreaseRepeatButton>
-                                <Track.IncreaseRepeatButton>
-                                    <RepeatButton 
-                                            Style="{StaticResource commonSlider_RepeatButton}"
-                                            Width="4" 
-                                            Background="{StaticResource volumeSlider_DarkColor}"
-                                            Command="Slider.IncreaseLarge">
-                                        <RepeatButton.Template>
-                                            <ControlTemplate>
-                                                <Border Background="{TemplateBinding Background}" CornerRadius="2,2,0,0"/>
-                                            </ControlTemplate>
-                                        </RepeatButton.Template>
-                                    </RepeatButton>
-                                </Track.IncreaseRepeatButton>
-                                <Track.Thumb>
-                                    <Thumb  Style="{StaticResource volumeSlider_Thumb}"/>
-                                </Track.Thumb>
-                            </Track>
-                        </Border>
+                <ControlTemplate TargetType="{x:Type Control}">
+                    <Grid Margin="3 2">
+                        <Rectangle Name="r1" StrokeThickness="1" Stroke="Black" StrokeDashArray="2 2"/>
+                        <Border Name="border" Width="{TemplateBinding ActualWidth}" Height="{TemplateBinding ActualHeight}"  CornerRadius="2" BorderThickness="1" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
+    <Style x:Key="ShadowStyle">
+        <Setter Property="Control.Foreground" Value="LightGray" />
+    </Style>
+    <Style x:Key="InformButton" TargetType="Button">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="FontFamily" Value="Verdana"/>
+        <Setter Property="FontSize" Value="11px"/>
+        <Setter Property="FocusVisualStyle" Value="{StaticResource MyFocusVisual}" />
+        <Setter Property="Background" >
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
+                    <GradientStop Color="#FFFFD190" Offset="0.2"/>
+                    <GradientStop Color="Orange" Offset="0.85"/>
+                    <GradientStop Color="#FFFFD190" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border" 
+        				BorderThickness="1"
+        				Padding="4,2" 
+        				BorderBrush="DarkGray" 
+        				CornerRadius="7" 
+        				Background="{TemplateBinding Background}">
+                        <Grid >
+                            <ContentPresenter HorizontalAlignment="Center" 
+        	                           VerticalAlignment="Center" Name="contentShadow" 
+        					Style="{StaticResource ShadowStyle}">
+                                <ContentPresenter.RenderTransform>
+                                    <TranslateTransform X="0.8" Y="0.8" />
+                                </ContentPresenter.RenderTransform>
+                            </ContentPresenter>
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                    VerticalAlignment="Center" Name="content"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="#FF4788c8" />
+                            <Setter Property="Foreground" Value="#FF4788c8" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" >
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" >
+                                        <GradientStop Color="#FFFFD190" Offset="0.35"/>
+                                        <GradientStop Color="Orange" Offset="0.95"/>
+                                        <GradientStop Color="#FFFFD190" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="content" Property="RenderTransform" >
+                                <Setter.Value>
+                                    <TranslateTransform Y="1.0" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsDefaulted" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="#FF282828" />
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="#FF282828" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="border" Property="Opacity" Value="0.7" />
+                            <Setter Property="Foreground" Value="Gray" />
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="OnOffToggleImageStyle" TargetType="ToggleButton">
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Content">
+                    <Setter.Value>
+                        <Image Source="../Images/Chair.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="False">
+                <Setter Property="Content">
+                    <Setter.Value>
+                        <Image Source="../Images/drink-01.png" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
+
+
+    <ControlTemplate x:Key="withoutMouseOverChair"
+           TargetType="ToggleButton">
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="true">
+                <Setter Property="Content">
+                    <Setter.Value>
+                        <Image Source="../Images/drink-01.png" />
+                    </Setter.Value>
+
+                </Setter>
+
+            </Trigger>
+            <Trigger Property="IsChecked" Value="false">
+                <Setter Property="Content">
+                    <Setter.Value>
+                        <Image Source="../Images/Chair.png"/>
+
+                    </Setter.Value>
+
+                </Setter>
+
+            </Trigger>
+
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+
+
+
+    <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+        <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" BorderBrush="Black"
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+            <ScrollViewer x:Name="PART_ContentHost"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+            </Trigger>
+            <Trigger Property="Width" Value="Auto">
+                <Setter Property="MinWidth" Value="100"/>
+            </Trigger>
+            <Trigger Property="Height" Value="Auto">
+                <Setter Property="MinHeight" Value="20"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
 </ResourceDictionary>

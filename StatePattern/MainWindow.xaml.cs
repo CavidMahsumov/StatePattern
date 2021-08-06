@@ -15,6 +15,22 @@ using System.Windows.Shapes;
 
 namespace StatePattern
 {
+    public class Player
+    {
+        State State { get; set; }
+        public Player()
+        {
+
+        }
+    }
+   public abstract class State
+    {
+        Player player { get; set; }
+        public State(Player player)
+        {
+            this.player = player;
+        }
+     }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
