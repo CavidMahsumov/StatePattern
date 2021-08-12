@@ -116,13 +116,14 @@
     <ControlTemplate x:Key="withoutMouseOver"
            TargetType="Button">
         <Grid>
-            <Label VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
+            <Label 
+                   
                        FontWeight="Light"
-                       FontSize="16"
+                       FontSize="35"
                        Foreground="#2e2b30"
                    Width="50"
                    Height="50"
+                   Content="X"
                   
                        ></Label>
         </Grid>

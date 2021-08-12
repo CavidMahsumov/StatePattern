@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:StatePattern">
+    <LinearGradientBrush x:Key="SpecialGradient" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#009fff" Offset="0.0" ></GradientStop>
+        <GradientStop Color="#ec2f4b" Offset="1" ></GradientStop>
+    </LinearGradientBrush>
+</ResourceDictionary>

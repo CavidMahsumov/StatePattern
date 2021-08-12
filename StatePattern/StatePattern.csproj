@@ -55,6 +55,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Music.cs" />
+    <Compile Include="State\PauseState.cs" />
+    <Compile Include="State\Play State.cs" />
+    <Compile Include="State\Player.cs" />
+    <Compile Include="State\State.cs" />
+    <Compile Include="State\StopState.cs" />
+    <Compile Include="State\TimeState.cs" />
+    <Page Include="Gradient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -106,6 +117,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\me.jpg" />
+    <Content Include="Musicc\1.mp3" />
+    <Content Include="Musicc\2pac.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
